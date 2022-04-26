@@ -55,6 +55,7 @@ You can change several settings here. The site language, your time zone, currenc
 Here you are shown the total amount of money you spent on your currently owned assets and its current worth.
 
 # 5. To do list
+* Add Help section.
 * Add option to change registered email address.
 * Add option to view characters when typing in a password.
 
