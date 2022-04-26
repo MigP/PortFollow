@@ -12,8 +12,9 @@
         * [General portfolio information](README.md#general-portfolio-information)
 5. [To do list](README.md#5-to-do-list)
 6. [Known issues](README.md#6-known-issues)
-7. [Version](README.md#7-version)
-8. [License](README.md#8-license)      
+7. [Remarks](README.md#7-remarks)
+8. [Version](README.md#8-version)
+9. [License](README.md#9-license)      
         
 # 2. PortFollow
 PortFollow allows you to keep track of your portfolio of financial assets.
@@ -52,3 +53,20 @@ You can change several settings here. The site language, your time zone, currenc
 
 * ### General portfolio information
 Here you are shown the total amount of money you spent on your currently owned assets and its current worth.
+
+# 5. To do list
+* Add option to change registered email address.
+* Add option to view characters when typing in a password.
+
+# 6. Known issues
+* Required input fields display a default system error message that is in English even when the user's selected language is a different language.
+
+# 7. Remarks
+
+
+# 8. Version
+1.0
+
+# 9. License
+
+[MIT License](LICENSE)
