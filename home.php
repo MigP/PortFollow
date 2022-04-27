@@ -47,7 +47,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link id="favicon" rel="shortcut icon" href="images/logo.png">
+  <link id="favicon" rel="shortcut icon" href="/images/logo.png">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <meta charset="utf-8">
@@ -105,6 +105,11 @@
       <ul style='display: flex;flex-direction: column;overflow-y: auto;'>
         <li>
           <h3 data-bind="text: settings"></h3>
+        </li>
+        <br>
+        <li>
+          <img src="images/icons/help.svg" data-bind="attr: {alt: help}" width="15" height="15" style="margin-right: 5px;">
+          <a class="menu-link" style="text-decoration: none;" target="_blank" href="https://github.com/MigP/PortFollow/blob/main/README.md" data-bind="text: help"></a>
         </li>
         <br>
         <li>
