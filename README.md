@@ -56,6 +56,7 @@ Here you are shown the total amount of money you spent on your currently owned a
 
 # 5. To do list
 * Add a Help section on the site itself.
+* Add price alerts.
 * Add option to change registered email address.
 * Add option to view characters when typing in a password.
 
