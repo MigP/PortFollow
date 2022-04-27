@@ -34,7 +34,7 @@
 		}
 		calculateValues();
 	}
-
+        
 	function lightOrDarkMode() { // Detects browser's dark or light mode
 		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 		    $("#favicon").attr("href","/images/lightlogo.png");
@@ -43,7 +43,7 @@
 		}
 	}
 	lightOrDarkMode();
-
+        
 	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) { // Detects browser's dark or light mode change
 		lightOrDarkMode();
 	});
@@ -301,7 +301,7 @@
 	        type: "POST",
 			success: function (response) {
 				console.log(response);
-				window.location.href = "includes/logout.php?linksent";
+                                window.location.href = "includes/logout.php?linksent";
 			}
 	    });
 	    exitMenu();
@@ -475,7 +475,6 @@
 
 			if (assetNr == 0) {
 				stringToAdd += "<div><p id='noass' data-bind='text: youOwnNoAssets'></p></div>", trTypeStr = "";
-				ko.applyBindings(AppViewModel, $("#noass")[0]);
 			}
 			for (a=0; a<assetNr; a++) {
 				el = "";
@@ -497,6 +496,10 @@
 			}
 			stringToAdd += "<div class='editTransactionRowAddNewButton'><img id='add-tr' src='images/icons/add.svg' data-bind='attr: {title: addTr, alt: addTr}' width='35' height='35' style='margin-right: 5px;cursor: pointer;' onClick='clickAddTransaction()'></div></div><div><br></div><div style='display: flex;flex-direction: column;align-items: center;'><button id='update-tr' data-bind='text: update' class='form_button btn btn-success btn-lg btn-block' style='width: 175px;' onClick='updateTransactions()'></button><button id='cancel-tr' data-bind='text: cancel' class='form_button btn btn-success btn-lg btn-block' style='width: 175px;' onClick='exitMenu()'></button></div></div></div>";
 			document.getElementById("popup_buttons").innerHTML = stringToAdd;
+			if (assetNr == 0) {
+				ko.applyBindings(AppViewModel, $("#noass")[0]);
+			}
+                        
 			$('body').css('position','fixed');
 			$('body').css('overflow-y','hidden');
 			$('.pop_up_parent').toggleClass('popup_visibility');
@@ -1042,14 +1045,14 @@
 				removeRightNav();
 			}
 		);
-
+                
 		$('.main_body').click(
 			function(){
 				removeRightNav();
 				removeLeftNav();
 			}
 		);
-
+                
 		$('.pop_up_bg').click(
 			function(){
 				exitMenu();
@@ -1059,6 +1062,36 @@
 
 // Knockout viewModel
 	function AppViewModel() {
+		   this.help = ko.computed(function() {
+		    	if (preferences[0] == "en") {
+		    		return "Help";
+		    	} else if (preferences[0] == "fr") {
+		    		return "Aide";
+		    	} else if (preferences[0] == "es") {
+		    		return "Ayuda";
+		    	} else if (preferences[0] == "de_DE") {
+		    		return "Hilfe";
+		    	} else if (preferences[0] == "br") {
+		    		return "Ajuda";
+		    	} else if (preferences[0] == "ru") {
+		    		return "Помощь";
+		    	}
+		    }, this);
+		   this.linkSent = ko.computed(function() {
+		    	if (preferences[0] == "en") {
+		    		return "A link has been emailed to you";
+		    	} else if (preferences[0] == "fr") {
+		    		return "Un lien vous a été envoyé par email";
+		    	} else if (preferences[0] == "es") {
+		    		return "Se le ha enviado un enlace por email";
+		    	} else if (preferences[0] == "de_DE") {
+		    		return "Ein Link wurde Ihnen per E-Mail zugeschickt";
+		    	} else if (preferences[0] == "br") {
+		    		return "Um link foi-lhe enviado por e-mail";
+		    	} else if (preferences[0] == "ru") {
+		    		return "Вам на почту отправлена ссылка";
+		    	}
+		    }, this);
 		   this.reset = ko.computed(function() {
 		    	if (preferences[0] == "en") {
 		    		return "Reset";
