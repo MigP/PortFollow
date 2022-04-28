@@ -56,6 +56,7 @@ Here you are shown the total amount of money you spent on your currently owned a
 
 # 5. To do list
 * Add a Help section on the site itself.
+* Add other type of commodities such as stocks for example - an API needs to be found which responds with real time market prices.
 * Add price alerts.
 * Add option to change registered email address.
 * Add option to view characters when typing in a password.
@@ -65,6 +66,7 @@ Here you are shown the total amount of money you spent on your currently owned a
 
 # 7. Remarks
 ___The database.php file (on the "includes" folder) does not contain database details for obvious reasons. For the site to be functional this needs to be added.___
+
 
 # 8. Version
 1.0
