@@ -227,7 +227,7 @@
                         $exch = $currentUsdExchange;
 
                       }
-                      $strToAdd = $strToAdd . '<div class="tradingview-widget-container"><div class="trview" id="tradingview_' . $a . '"></div><script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script><script type="text/javascript">new TradingView.widget({"autosize": true,"symbol": "' . $exch . ':' . $currentAssetCode . $currentCurrency . '","interval": "W","timezone": "' . $currentTimezone . '","theme": "dark","style": "3","locale": "' . $currentLanguage . '","toolbar_bg": "#f1f3f6","enable_publishing": false,"hide_top_toolbar": true,"withdateranges": true,"hide_side_toolbar": false,"save_image": false,"container_id": "tradingview_' . $a . '"});</script></div>';
+                      $strToAdd = $strToAdd . '<div class="tradingview-widget-container"><div class="trview" id="tradingview_' . $a . '"></div><script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script><script type="text/javascript">new TradingView.widget({"autosize": true,"symbol": "' . $exch . ':' . $currentAssetCode . $currentCurrency . '","interval": "5","timezone": "' . $currentTimezone . '","theme": "dark","style": "3","locale": "' . $currentLanguage . '","toolbar_bg": "#f1f3f6","enable_publishing": false,"hide_top_toolbar": true,"withdateranges": true,"hide_side_toolbar": false,"save_image": false,"container_id": "tradingview_' . $a . '"});</script></div>';
                       echo $strToAdd;
                     }
                   echo '</div>';
