@@ -984,6 +984,7 @@
 			document.getElementById('username').innerHTML = " " + preferences[4] + "! ";
 			document.getElementById('invested-amount').innerHTML = prefix + " " + formatNr(totalSpent);
 			document.getElementById('worth-amount').innerHTML = prefix + " " + formatNr(totalWorth);
+			document.getElementById('fear_index').innerHTML += ": " + fearAndGreedData.data[0].value + "%";
                         
                         if (fearAndGreedData.data[0].value > 75) {
 				$('#fear_index').css('color','green');
