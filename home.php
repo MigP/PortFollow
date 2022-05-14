@@ -180,7 +180,7 @@
         </div>
       </div>
 
-      <!-- Header -->
+      <!-- Headers -->
       <div class="row header">
         <div class="col">
           <p id="headerMessage" class="hint-text">
@@ -192,6 +192,14 @@
         </div>
       </div>
 
+      <div class="row header">
+        <div class="col">
+          <p id="fearAndGreed" class="hint-text">
+            <span data-bind="text: currentFearIndex"></span><strong><span id="fear_index" data-bind="text: currentGreedAndFear"></span></strong>
+          </p>
+        </div>
+      </div>
+      
       <!-- Main section -->
       <div id="main_view" class="row main">
           <?php
