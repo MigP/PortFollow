@@ -75,7 +75,7 @@ margin: auto;
 }
 
 .hint-text {
-	font-size: larger;
+	font-size: calc(0.325vw + 0.325vh + 1.4vmax);
 	text-align: center;
 }
 
