@@ -984,7 +984,6 @@
 			document.getElementById('username').innerHTML = " " + preferences[4] + "! ";
 			document.getElementById('invested-amount').innerHTML = prefix + " " + formatNr(totalSpent);
 			document.getElementById('worth-amount').innerHTML = prefix + " " + formatNr(totalWorth);
-			document.getElementById('fear_index').innerHTML += ": " + fearAndGreedData.data[0].value + "%";
                         
                         if (fearAndGreedData.data[0].value > 75) {
 				$('#fear_index').css('color','green');
@@ -1079,61 +1078,62 @@
 	function AppViewModel() {
                 this.currentGreedAndFear = ko.computed(function() {
                         if (fearAndGreedData != undefined) {
+                                fAndGString = ": " + fearAndGreedData.data[0].value + "%";
                                 if (fearAndGreedData.data[0].value > 75) {
                                         if (preferences[0] == "en") {
-                                                return "Extreme greed";
+                                                return "Extreme greed" + fAndGString;
                                                 } else if (preferences[0] == "fr") {
-                                                        return "Cupidité extrême";
+                                                        return "Cupidité extrême" + fAndGString;
                                                 } else if (preferences[0] == "es") {
-                                                        return "Codicia extrema";
+                                                        return "Codicia extrema" + fAndGString;
                                                 } else if (preferences[0] == "de_DE") {
-                                                        return "Extreme Gier";
+                                                        return "Extreme Gier" + fAndGString;
                                                 } else if (preferences[0] == "br") {
-                                                        return "Ganância extrema";
+                                                        return "Ganância extrema" + fAndGString;
                                                 } else if (preferences[0] == "ru") {
-                                                        return "Крайняя жадность";
+                                                        return "Крайняя жадность" + fAndGString;
                                                 }
                                 } else if (fearAndGreedData.data[0].value > 50 && fearAndGreedData.data[0].value <= 75) {
                                                 if (preferences[0] == "en") {
-                                                        return "Greed";
+                                                        return "Greed" + fAndGString;
                                                 } else if (preferences[0] == "fr") {
-                                                        return "Cupidité";
+                                                        return "Cupidité" + fAndGString;
                                                 } else if (preferences[0] == "es") {
-                                                        return "Codicia";
+                                                        return "Codicia" + fAndGString;
                                                 } else if (preferences[0] == "de_DE") {
-                                                        return "Gier";
+                                                        return "Gier" + fAndGString;
                                                 } else if (preferences[0] == "br") {
-                                                        return "Ganância";
+                                                        return "Ganância" + fAndGString;
                                                 } else if (preferences[0] == "ru") {
-                                                        return "Жадность";
+                                                        return "Жадность" + fAndGString;
                                                 }
                                 } else if (fearAndGreedData.data[0].value > 25 && fearAndGreedData.data[0].value <= 50) {
                                                 if (preferences[0] == "en") {
-                                                        return "Fear";
+                                                        return "Fear" + fAndGString;
                                                 } else if (preferences[0] == "fr") {
-                                                        return "Peur";
+                                                        return "Peur" + fAndGString;
                                                 } else if (preferences[0] == "es") {
-                                                        return "Miedo";
+                                                        return "Miedo" + fAndGString;
                                                 } else if (preferences[0] == "de_DE") {
-                                                        return "Angst";
+                                                        return "Angst" + fAndGString;
                                                 } else if (preferences[0] == "br") {
-                                                        return "Medo";
+                                                        return "Medo" + fAndGString;
                                                 } else if (preferences[0] == "ru") {
-                                                        return "Страх";
+                                                        return "Страх" + fAndGString;
                                                 }
                                 } else if (fearAndGreedData.data[0].value <= 25) {
                                                 if (preferences[0] == "en") {
-                                                        return "Extreme fear";
+                                                        return "Extreme fear" + fAndGString;
                                                 } else if (preferences[0] == "fr") {
-                                                        return "Peur extrême";
+                                                        return "Peur extrême" + fAndGString;
                                                 } else if (preferences[0] == "es") {
-                                                        return "Miedo extremo";
+                                                        return "Miedo extremo" + fAndGString;
                                                 } else if (preferences[0] == "de_DE") {
-                                                        return "Extreme Angst";
+                                                        return "Extreme Angst" + fAndGString;
                                                 } else if (preferences[0] == "br") {
-                                                        return "Medo extremo";
+                                                        return "Medo extremo" + fAndGString;
                                                 } else if (preferences[0] == "ru") {
-                                                        return "Экстремальный страх";
+                                                        return "Экстремальный страх" + fAndGString;
                                                 }
                                 }
                         }
