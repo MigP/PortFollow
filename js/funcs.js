@@ -1,6 +1,7 @@
 // Global variables
 	var cryptoDataUrl = "https://api.bitpanda.com/v1/ticker";
-	var cryptoData, currentAssets = {}, totalAssets = [], valuesArray = [], preferences = [];
+        var fearAndGreedIndex = "https://api.alternative.me/fng/";
+	var cryptoData, fearAndGreedData, currentAssets = {}, totalAssets = [], valuesArray = [], preferences = [];
 
 // Document load functions
 	// device detection
@@ -799,6 +800,9 @@
 	function getLatestCryptoData() {
 		// Get latest Crypto data
 			cryptoData = JSON.parse(httpGet(cryptoDataUrl));
+                        
+                // Get latest Fear & Greed Index
+                        fearAndGreedData = JSON.parse(httpGet(fearAndGreedIndex));
 	}
 
 	function forexAndGraphs() {
@@ -968,7 +972,7 @@
 				
 		}
 
-		// Fill out header
+		// Fill out headers
 			totalSpent = 0, totalWorth = 0;
 			for(a=0; a<valuesArray.length; a++) {
 				totalSpent += parseFloat(valuesArray[a].spent);
@@ -981,6 +985,17 @@
 			document.getElementById('username').innerHTML = " " + preferences[4] + "! ";
 			document.getElementById('invested-amount').innerHTML = prefix + " " + formatNr(totalSpent);
 			document.getElementById('worth-amount').innerHTML = prefix + " " + formatNr(totalWorth);
+                        
+			if (fearAndGreedData.data[0].value <= 2.5) {
+				$('#fear_index').css('color','green');
+			} else if (fearAndGreedData.data[0].value > 2.5 && fearAndGreedData.data[0].value <= 5) {
+				$('#fear_index').css('color','greenyellow');
+			} else if (fearAndGreedData.data[0].value > 5 && fearAndGreedData.data[0].value <= 7.5) {
+				$('#fear_index').css('color','orange');
+			} else if (fearAndGreedData.data[0].value > 7.5) {
+				$('#fear_index').css('color','red');
+			}
+
 
 			if (totalSpent > totalWorth) {
 				$('#worth-amount').css('color','red');
@@ -1062,6 +1077,80 @@
 
 // Knockout viewModel
 	function AppViewModel() {
+		   this.currentGreedAndFear = ko.computed(function() {
+                        if (fearAndGreedData.data[0].value <= 2.5) {
+                                if (preferences[0] == "en") {
+                                        return "Extreme greed";
+                                } else if (preferences[0] == "fr") {
+                                        return "Cupidité extrême";
+                                } else if (preferences[0] == "es") {
+                                        return "Codicia extrema";
+                                } else if (preferences[0] == "de_DE") {
+                                        return "Extreme Gier";
+                                } else if (preferences[0] == "br") {
+                                        return "Ganância extrema";
+                                } else if (preferences[0] == "ru") {
+                                        return "Крайняя жадность";
+                                }
+                        } else if (fearAndGreedData.data[0].value > 2.5 && fearAndGreedData.data[0].value <= 5) {
+                                if (preferences[0] == "en") {
+                                        return "Greed";
+                                } else if (preferences[0] == "fr") {
+                                        return "Cupidité";
+                                } else if (preferences[0] == "es") {
+                                        return "Codicia";
+                                } else if (preferences[0] == "de_DE") {
+                                        return "Gier";
+                                } else if (preferences[0] == "br") {
+                                        return "Ganância";
+                                } else if (preferences[0] == "ru") {
+                                        return "Жадность";
+                                }
+                        } else if (fearAndGreedData.data[0].value > 5 && fearAndGreedData.data[0].value <= 7.5) {
+                                if (preferences[0] == "en") {
+                                        return "Fear";
+                                } else if (preferences[0] == "fr") {
+                                        return "Peur";
+                                } else if (preferences[0] == "es") {
+                                        return "Miedo";
+                                } else if (preferences[0] == "de_DE") {
+                                        return "Angst";
+                                } else if (preferences[0] == "br") {
+                                        return "Medo";
+                                } else if (preferences[0] == "ru") {
+                                        return "Страх";
+                                }
+                        } else if (fearAndGreedData.data[0].value > 7.5) {
+                                if (preferences[0] == "en") {
+                                        return "Extreme fear";
+                                } else if (preferences[0] == "fr") {
+                                        return "Peur extrême";
+                                } else if (preferences[0] == "es") {
+                                        return "Miedo extremo";
+                                } else if (preferences[0] == "de_DE") {
+                                        return "Extreme Angst";
+                                } else if (preferences[0] == "br") {
+                                        return "Medo extremo";
+                                } else if (preferences[0] == "ru") {
+                                        return "Экстремальный страх";
+                                }
+                        }
+		    }, this);
+		   this.currentFearIndex = ko.computed(function() {
+		    	if (preferences[0] == "en") {
+		    		return "Fear and greed index: ";
+		    	} else if (preferences[0] == "fr") {
+		    		return "Indice de peur et d'cupidité: ";
+		    	} else if (preferences[0] == "es") {
+		    		return "Índice de miedo y codicia: ";
+		    	} else if (preferences[0] == "de_DE") {
+		    		return "Angst und Gier Index: ";
+		    	} else if (preferences[0] == "br") {
+		    		return "Índice de medo e ganância: ";
+		    	} else if (preferences[0] == "ru") {
+		    		return "Индекс страха и жадности: ";
+		    	}
+		    }, this);
 		   this.help = ko.computed(function() {
 		    	if (preferences[0] == "en") {
 		    		return "Help";
