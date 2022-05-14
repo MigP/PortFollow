@@ -1077,62 +1077,64 @@
 // Knockout viewModel
 	function AppViewModel() {
                 this.currentGreedAndFear = ko.computed(function() {
-                        if (fearAndGreedData.data[0].value > 75) {
-                                if (preferences[0] == "en") {
-                                        return "Extreme greed";
-                                        } else if (preferences[0] == "fr") {
-                                                return "Cupidité extrême";
-                                        } else if (preferences[0] == "es") {
-                                                return "Codicia extrema";
-                                        } else if (preferences[0] == "de_DE") {
-                                                return "Extreme Gier";
-                                        } else if (preferences[0] == "br") {
-                                                return "Ganância extrema";
-                                        } else if (preferences[0] == "ru") {
-                                                return "Крайняя жадность";
-                                        }
-                        } else if (fearAndGreedData.data[0].value > 50 && fearAndGreedData.data[0].value <= 75) {
+                        if (fearAndGreedData != undefined) {
+                                if (fearAndGreedData.data[0].value > 75) {
                                         if (preferences[0] == "en") {
-                                                return "Greed";
-                                        } else if (preferences[0] == "fr") {
-                                                return "Cupidité";
-                                        } else if (preferences[0] == "es") {
-                                                return "Codicia";
-                                        } else if (preferences[0] == "de_DE") {
-                                                return "Gier";
-                                        } else if (preferences[0] == "br") {
-                                                return "Ganância";
-                                        } else if (preferences[0] == "ru") {
-                                                return "Жадность";
-                                        }
-                        } else if (fearAndGreedData.data[0].value > 25 && fearAndGreedData.data[0].value <= 50) {
-                                        if (preferences[0] == "en") {
-                                                return "Fear";
-                                        } else if (preferences[0] == "fr") {
-                                                return "Peur";
-                                        } else if (preferences[0] == "es") {
-                                                return "Miedo";
-                                        } else if (preferences[0] == "de_DE") {
-                                                return "Angst";
-                                        } else if (preferences[0] == "br") {
-                                                return "Medo";
-                                        } else if (preferences[0] == "ru") {
-                                                return "Страх";
-                                        }
-                        } else if (fearAndGreedData.data[0].value <= 25) {
-                                        if (preferences[0] == "en") {
-                                                return "Extreme fear";
-                                        } else if (preferences[0] == "fr") {
-                                                return "Peur extrême";
-                                        } else if (preferences[0] == "es") {
-                                                return "Miedo extremo";
-                                        } else if (preferences[0] == "de_DE") {
-                                                return "Extreme Angst";
-                                        } else if (preferences[0] == "br") {
-                                                return "Medo extremo";
-                                        } else if (preferences[0] == "ru") {
-                                                return "Экстремальный страх";
-                                        }
+                                                return "Extreme greed";
+                                                } else if (preferences[0] == "fr") {
+                                                        return "Cupidité extrême";
+                                                } else if (preferences[0] == "es") {
+                                                        return "Codicia extrema";
+                                                } else if (preferences[0] == "de_DE") {
+                                                        return "Extreme Gier";
+                                                } else if (preferences[0] == "br") {
+                                                        return "Ganância extrema";
+                                                } else if (preferences[0] == "ru") {
+                                                        return "Крайняя жадность";
+                                                }
+                                } else if (fearAndGreedData.data[0].value > 50 && fearAndGreedData.data[0].value <= 75) {
+                                                if (preferences[0] == "en") {
+                                                        return "Greed";
+                                                } else if (preferences[0] == "fr") {
+                                                        return "Cupidité";
+                                                } else if (preferences[0] == "es") {
+                                                        return "Codicia";
+                                                } else if (preferences[0] == "de_DE") {
+                                                        return "Gier";
+                                                } else if (preferences[0] == "br") {
+                                                        return "Ganância";
+                                                } else if (preferences[0] == "ru") {
+                                                        return "Жадность";
+                                                }
+                                } else if (fearAndGreedData.data[0].value > 25 && fearAndGreedData.data[0].value <= 50) {
+                                                if (preferences[0] == "en") {
+                                                        return "Fear";
+                                                } else if (preferences[0] == "fr") {
+                                                        return "Peur";
+                                                } else if (preferences[0] == "es") {
+                                                        return "Miedo";
+                                                } else if (preferences[0] == "de_DE") {
+                                                        return "Angst";
+                                                } else if (preferences[0] == "br") {
+                                                        return "Medo";
+                                                } else if (preferences[0] == "ru") {
+                                                        return "Страх";
+                                                }
+                                } else if (fearAndGreedData.data[0].value <= 25) {
+                                                if (preferences[0] == "en") {
+                                                        return "Extreme fear";
+                                                } else if (preferences[0] == "fr") {
+                                                        return "Peur extrême";
+                                                } else if (preferences[0] == "es") {
+                                                        return "Miedo extremo";
+                                                } else if (preferences[0] == "de_DE") {
+                                                        return "Extreme Angst";
+                                                } else if (preferences[0] == "br") {
+                                                        return "Medo extremo";
+                                                } else if (preferences[0] == "ru") {
+                                                        return "Экстремальный страх";
+                                                }
+                                }
                         }
                 }, this);
 		   this.currentFearIndex = ko.computed(function() {
