@@ -949,15 +949,15 @@
 					document.getElementById("section_info_" + a).innerHTML = strToAdd;
 				}
 				for (a=0; a<listOfAssets.length; a++) {
-					ko.applyBindings(AppViewModel, $("#expl-port-" + a)[0]);
-					ko.applyBindings(AppViewModel, $("#expl-port2-" + a)[0]);
-					ko.applyBindings(AppViewModel, $("#expl-curr-" + a)[0]);
-					ko.applyBindings(AppViewModel, $("#expl-curr2-" + a)[0]);
-					ko.applyBindings(AppViewModel, $("#expl-sale-" + a)[0]);
-					ko.applyBindings(AppViewModel, $("#expl-sale2-" + a)[0]);
-					ko.applyBindings(AppViewModel, $("#owned-" + a)[0]);
-					ko.applyBindings(AppViewModel, $("#spent-" + a)[0]);
-					ko.applyBindings(AppViewModel, $("#worth-" + a)[0]);
+					ko.applyBindings(ViewModel, $("#expl-port-" + a)[0]);
+					ko.applyBindings(ViewModel, $("#expl-port2-" + a)[0]);
+					ko.applyBindings(ViewModel, $("#expl-curr-" + a)[0]);
+					ko.applyBindings(ViewModel, $("#expl-curr2-" + a)[0]);
+					ko.applyBindings(ViewModel, $("#expl-sale-" + a)[0]);
+					ko.applyBindings(ViewModel, $("#expl-sale2-" + a)[0]);
+					ko.applyBindings(ViewModel, $("#owned-" + a)[0]);
+					ko.applyBindings(ViewModel, $("#spent-" + a)[0]);
+					ko.applyBindings(ViewModel, $("#worth-" + a)[0]);
 					if ($("#none-" + a).length >0) {
 						ko.applyBindings(AppViewModel, $("#none-" + a)[0]);
 					}
@@ -984,7 +984,7 @@
 			document.getElementById('username').innerHTML = " " + preferences[4] + "! ";
 			document.getElementById('invested-amount').innerHTML = prefix + " " + formatNr(totalSpent);
 			document.getElementById('worth-amount').innerHTML = prefix + " " + formatNr(totalWorth);
-                        
+
                         if (fearAndGreedData.data[0].value > 75) {
 				$('#fear_index').css('color','green');
 			} else if (fearAndGreedData.data[0].value > 50 && fearAndGreedData.data[0].value <= 75) {
@@ -994,7 +994,7 @@
 			} else if (fearAndGreedData.data[0].value <= 25) {
 				$('#fear_index').css('color','red');
 			}
-
+                        AppViewModel.fearAndGreedValue(fearAndGreedData.data[0].value);
 
 			if (totalSpent > totalWorth) {
 				$('#worth-amount').css('color','red');
@@ -1075,10 +1075,11 @@
 	});
 
 // Knockout viewModel
-	function AppViewModel() {
+	function ViewModel() {
+                this.fearAndGreedValue = ko.observable (fearAndGreedData.data[0].value);
                 this.currentGreedAndFear = ko.computed(function() {
                         if (fearAndGreedData != undefined) {
-                                fAndGString = ": " + fearAndGreedData.data[0].value + "%";
+                                fAndGString = ": " + this.fearAndGreedValue() + "%";
                                 if (fearAndGreedData.data[0].value > 75) {
                                         if (preferences[0] == "en") {
                                                 return "Extreme greed" + fAndGString;
@@ -2279,3 +2280,4 @@
 		    	}
 		    }, this);
 	}
+        
