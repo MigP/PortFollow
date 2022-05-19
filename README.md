@@ -63,6 +63,7 @@ Here you are shown the total amount of money you spent on your currently owned a
 
 # 6. Known issues
 * Required input fields display a default system error message that is in English even when the user's selected language is a different language.
+* Fear and Greed Index is not updating real time.
 
 # 7. Remarks
 ___The database.php file (on the "includes" folder) does not contain database details for obvious reasons. For the site to be functional this needs to be added.___
