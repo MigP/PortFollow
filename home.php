@@ -327,8 +327,10 @@
 </body>
 </html>
 <script>
+var AppViewModel;
   $(document).ready(function() {
     // Initialise Ko ViewModel
-      ko.applyBindings(new AppViewModel());
+            AppViewModel = new ViewModel();
+            ko.applyBindings(AppViewModel);
   });
 </script>
