@@ -108,8 +108,7 @@ div.hint-text {
 
 .header {
 	height: 65px;
-	position: sticky;
-	top: 42px;
+	position: relative;
 	display: block;
 }
 
