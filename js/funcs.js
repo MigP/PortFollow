@@ -1,6 +1,6 @@
 // Global variables
 	var cryptoDataUrl = "https://api.bitpanda.com/v1/ticker";
-        var fearAndGreedIndex = "https://api.alternative.me/fng/";
+        var fearAndGreedIndex = "https://api.alternative.me/fng/?limit=5";
 	var cryptoData, fearAndGreedData, currentAssets = {}, totalAssets = [], valuesArray = [], preferences = [], deviceOrientation = "";
 
 // Document load functions
@@ -1109,6 +1109,12 @@
                 this.currentGreedAndFear = ko.computed(function() {
                         if (fearAndGreedData != undefined) {
                                 fAndGString = ": " + this.fearAndGreedValue() + "%";
+                                
+                                if (fearAndGreedData.data[0].value < fearAndGreedData.data[4].value) {
+                                        fAndGString += "  ↓↓↓";
+                                } else if (fearAndGreedData.data[0].value > fearAndGreedData.data[4].value) {
+                                        fAndGString += "  ↑↑↑";
+                                }
                                 
                                 if (fearAndGreedData.data[0].value > 75) {
                                         if (preferences[0] == "en") {
