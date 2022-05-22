@@ -60,6 +60,7 @@
   <script src="js/jquery.ui.touch-punch.min.js"></script>
   <script src="js/knockout-3.5.1.js"></script>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="js/gauge.min.js"></script>
   <script src="js/funcs.js"></script>
  </head>
 <body>
@@ -193,10 +194,11 @@
       </div>
 
       <div class="row header">
-        <div class="col">
+        <div class="col" style="flex-flow: row;display: flex;justify-content: center;">
           <p id="fearAndGreed" class="hint-text">
             <span data-bind="text: currentFearIndex"></span><strong><span id="fear_index" data-bind="text: currentGreedAndFear"></span></strong>
           </p>
+          <canvas id="gauge" style="width: 8vw; height: 8vh;position: relative;"></canvas>
         </div>
       </div>
       
