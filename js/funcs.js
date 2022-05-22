@@ -1,7 +1,7 @@
 // Global variables
 	var cryptoDataUrl = "https://api.bitpanda.com/v1/ticker";
         var fearAndGreedIndex = "https://api.alternative.me/fng/";
-	var cryptoData, fearAndGreedData, currentAssets = {}, totalAssets = [], valuesArray = [], preferences = [];
+	var cryptoData, fearAndGreedData, currentAssets = {}, totalAssets = [], valuesArray = [], preferences = [], deviceOrientation = "";
 
 // Document load functions
 	// device detection
