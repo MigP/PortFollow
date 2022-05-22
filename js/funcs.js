@@ -1112,9 +1112,9 @@
                         if (fearAndGreedData != undefined) {
                                 fAndGString = ": " + this.fearAndGreedValue() + "%";
                                 if (this.fearAndGreedPreviousValue() > this.fearAndGreedValue()) {
-                                        fAndGString += " ↓";
+                                        fAndGString += " ↓↓↓";
                                 } else if (this.fearAndGreedPreviousValue() < this.fearAndGreedValue()) {
-                                        fAndGString += " ↑";
+                                        fAndGString += " ↑↑↑";
                                 }
                                 
                                 if (fearAndGreedData.data[0].value > 75) {
