@@ -985,15 +985,8 @@
 			document.getElementById('invested-amount').innerHTML = prefix + " " + formatNr(totalSpent);
 			document.getElementById('worth-amount').innerHTML = prefix + " " + formatNr(totalWorth);
 
-                        if (fearAndGreedData.data[0].value > 75) {
-				$('#fear_index').css('color','green');
-			} else if (fearAndGreedData.data[0].value > 50 && fearAndGreedData.data[0].value <= 75) {
-				$('#fear_index').css('color','greenyellow');
-			} else if (fearAndGreedData.data[0].value > 25 && fearAndGreedData.data[0].value <= 50) {
-				$('#fear_index').css('color','orange');
-			} else if (fearAndGreedData.data[0].value <= 25) {
-				$('#fear_index').css('color','red');
-			}
+                        $('#fear_index').css('color',AppViewModel.currentFearIndexColour());
+                        AppViewModel.fearAndGreedPreviousValue(AppViewModel.fearAndGreedValue);
                         AppViewModel.fearAndGreedValue(fearAndGreedData.data[0].value);
 
 			if (totalSpent > totalWorth) {
@@ -1008,6 +1001,32 @@
 			$('.main-list-item').css('height', 'fit-content');
 			$('#headerMessage').css('font-size', 'small');
 		}
+                
+                // Draw gauge
+                        var opts = {
+                          angle: -0.18, // The span of the gauge arc
+                          lineWidth: 0.27, // The line thickness
+                          radiusScale: 1, // Relative radius
+                          pointer: {
+                            length: 0.7, // // Relative to gauge radius
+                            strokeWidth: 0.08, // The thickness
+                            color: '#667082', // Fill color
+                            iconScale: 1.0
+                          },
+                          limitMax: false,     // If false, max value increases automatically if value > maxValue
+                          limitMin: false,     // If true, the min value of the gauge will be fixed
+                          percentColors: [[0.0, "#ff2600" ], [0.5, "#f4fb00"], [1.0, "#14ff00"]],
+                          strokeColor: '#bac0d0',  // to see which ones work best for you
+                          generateGradient: true,
+                          highDpiSupport: true,     // High resolution support
+                          
+                        };
+                        var target = document.getElementById('gauge'); // your canvas element
+                        var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+                        gauge.maxValue = 100; // set max gauge value
+                        gauge.minValue = 0;  // set min gauge value
+                        gauge.animationSpeed = 25; // set animation speed (32 is default value)
+                        gauge.set(AppViewModel.fearAndGreedValue()); // set actual value
 	}
 // jQuery ready functions
 	jQuery(document).ready(function($){
@@ -1076,6 +1095,7 @@
 
 // Knockout viewModel
 	function ViewModel() {
+                this.fearAndGreedPreviousValue = ko.observable (-1);
                 this.fearAndGreedValue = ko.observable (fearAndGreedData.data[0].value);
                 this.currentGreedAndFear = ko.computed(function() {
                         if (fearAndGreedData != undefined) {
@@ -1139,6 +1159,29 @@
                                 }
                         }
                 }, this);
+		   this.currentFearIndexColour = ko.computed(function() {
+		    	if (this.fearAndGreedValue() <= 10) {
+		    		return "#ff2600";
+		    	} else if (this.fearAndGreedValue() > 10 && this.fearAndGreedValue() <= 20) {
+		    		return "#ff5700";
+		    	} else if (this.fearAndGreedValue() > 20 && this.fearAndGreedValue() <= 30) {
+		    		return "#ff8100";
+		    	} else if (this.fearAndGreedValue() > 30 && this.fearAndGreedValue() <= 40) {
+		    		return "#ffaf00";
+		    	} else if (this.fearAndGreedValue() > 40 && this.fearAndGreedValue() <= 50) {
+		    		return "#ffda00";
+		    	} else if (this.fearAndGreedValue() > 50 && this.fearAndGreedValue() <= 60) {
+		    		return "#f4fb00";
+		    	} else if (this.fearAndGreedValue() > 60 && this.fearAndGreedValue() <= 70) {
+		    		return "#c1ff00";
+		    	} else if (this.fearAndGreedValue() > 70 && this.fearAndGreedValue() <= 80) {
+		    		return "#88ff00";
+		    	} else if (this.fearAndGreedValue() > 80 && this.fearAndGreedValue() <= 90) {
+		    		return "#4dff00";
+		    	} else if (this.fearAndGreedValue() > 90 && this.fearAndGreedValue() <= 100) {
+		    		return "#14ff00";
+		    	}
+		    }, this);
 		   this.currentFearIndex = ko.computed(function() {
 		    	if (preferences[0] == "en") {
 		    		return "Fear and greed index: ";
