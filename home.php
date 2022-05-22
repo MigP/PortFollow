@@ -194,11 +194,15 @@
       </div>
 
       <div class="row header">
-        <div class="col" style="flex-flow: row;display: flex;justify-content: center;">
-          <p id="fearAndGreed" class="hint-text">
-            <span data-bind="text: currentFearIndex"></span><strong><span id="fear_index" data-bind="text: currentGreedAndFear"></span></strong>
-          </p>
-          <canvas id="gauge" style="width: 8vw; height: 8vh;position: relative;"></canvas>
+        <div class="col gauge_container">
+          <div class="col-7" style="justify-content: end;display: inline-flex;">
+            <p id="fearAndGreed" class="hint-text">
+              <span data-bind="text: currentFearIndex"></span><strong><span id="fear_index" data-bind="text: currentGreedAndFear"></span></strong>
+            </p>
+          </div>
+          <div class="col-5" style="justify-content: start;display: inline-flex;padding-left: 3em;">
+            <canvas id="gauge"></canvas>
+          </div>
         </div>
       </div>
       
