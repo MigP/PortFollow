@@ -986,7 +986,7 @@
 			document.getElementById('worth-amount').innerHTML = prefix + " " + formatNr(totalWorth);
 
                         $('#fear_index').css('color',AppViewModel.currentFearIndexColour());
-                        AppViewModel.fearAndGreedPreviousValue(AppViewModel.fearAndGreedValue);
+                        AppViewModel.fearAndGreedPreviousValue(AppViewModel.fearAndGreedValue());
                         AppViewModel.fearAndGreedValue(fearAndGreedData.data[0].value);
 
 			if (totalSpent > totalWorth) {
@@ -1111,6 +1111,12 @@
                 this.currentGreedAndFear = ko.computed(function() {
                         if (fearAndGreedData != undefined) {
                                 fAndGString = ": " + this.fearAndGreedValue() + "%";
+                                if (this.fearAndGreedPreviousValue() > this.fearAndGreedValue()) {
+                                        fAndGString += " ↓";
+                                } else if (this.fearAndGreedPreviousValue() < this.fearAndGreedValue()) {
+                                        fAndGString += " ↑";
+                                }
+                                
                                 if (fearAndGreedData.data[0].value > 75) {
                                         if (preferences[0] == "en") {
                                                 return "Extreme greed" + fAndGString;
