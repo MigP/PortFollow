@@ -1010,12 +1010,23 @@
                           pointer: {
                             length: 0.7, // // Relative to gauge radius
                             strokeWidth: 0.08, // The thickness
-                            color: '#667082', // Fill color
+                            color: '#a7adb8', // Fill color
                             iconScale: 1.0
                           },
+                        staticZones: [
+                           {strokeStyle: "#ff2600", min: 0, max: 10},
+                           {strokeStyle: "#ff5700", min: 10, max: 20},
+                           {strokeStyle: "#ff8100", min: 20, max: 30},
+                           {strokeStyle: "#ffaf00", min: 30, max: 40},
+                           {strokeStyle: "#ffda00", min: 40, max: 50},
+                           {strokeStyle: "#f4fb00", min: 50, max: 60},
+                           {strokeStyle: "#c1ff00", min: 60, max: 70},
+                           {strokeStyle: "#88ff00", min: 70, max: 80},
+                           {strokeStyle: "#4dff00", min: 80, max: 90},
+                           {strokeStyle: "#14ff00", min: 90, max: 100}
+                        ],
                           limitMax: false,     // If false, max value increases automatically if value > maxValue
                           limitMin: false,     // If true, the min value of the gauge will be fixed
-                          percentColors: [[0.0, "#ff2600" ], [0.5, "#f4fb00"], [1.0, "#14ff00"]],
                           strokeColor: '#bac0d0',  // to see which ones work best for you
                           generateGradient: true,
                           highDpiSupport: true,     // High resolution support
