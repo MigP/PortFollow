@@ -116,6 +116,20 @@ div.hint-text {
 	width: 100%;
 }
 
+.gauge_container {
+        flex-flow: row;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20vw;
+}
+
+#gauge {
+        width: 4em;
+        height: 3.5em;
+        position: relative;
+}
+
 .margin-correction{
 	margin-left: -8.33333333%;
 }
@@ -361,6 +375,14 @@ input.transaction_input {
         .hint-text {
                 font-size: calc(0.325vw + 0.325vh + 1.4vmax);
                 text-align: center;
+        }
+        
+        .gauge_container {
+                flex-flow: row;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 0vw;
         }
 
 	.leftNavMenuOut {
