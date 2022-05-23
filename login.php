@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link id="favicon" rel="shortcut icon" href="images/logo.png">
+  <link id="favicon" rel="shortcut icon" href="/images/logo.png">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <meta charset="utf-8">
@@ -40,7 +40,7 @@
       })
 
       // Initialise Ko ViewModel
-        ko.applyBindings(new AppViewModel());
+        ko.applyBindings(new ViewModel());
         });
   </script>
 </head>
@@ -90,6 +90,8 @@
             echo "<span data-bind='text: emailVerified'></span>";
           } else if(isset($_GET["updated"])) {
             echo "<span data-bind='text: passwordReset'></span>";
+          } else if(isset($_GET["linksent"])) {
+            echo "<span data-bind='text: linkSent'></span>";
           } else {
             echo "<br>";
           }
