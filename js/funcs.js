@@ -50,6 +50,8 @@
 	});
 
 	$(document).ready(function() {
+                // Get crypto data
+                        getLatestCryptoData();
 		if (document.body.contains(document.getElementById('total_assets'))) {
 			// Setting up asset variables
 				if (document.getElementById('hidden').childElementCount == 3) {
@@ -80,9 +82,6 @@
 				document.getElementById('hidden').innerHTML = '';
 				createAssetMenu();
 
-			// Get crypto data
-				getLatestCryptoData();
-			
 			// Draw graphs and get forex data
 				forexAndGraphs();
 
