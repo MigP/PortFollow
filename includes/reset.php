@@ -31,7 +31,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link id="favicon" rel="shortcut icon" href="../images/logo.png">
+  <link id="favicon" rel="shortcut icon" href="/images/logo.png">
   <link href="../css/bootstrap.min.css" rel="stylesheet">
   <link href="../css/styles.css" rel="stylesheet">
   <meta charset="utf-8">
@@ -43,6 +43,7 @@
   <script src="../js/knockout-3.5.1.js"></script>  
   <script src="../js/funcs.js"></script>
   <script type="text/javascript">
+    var AppViewModel;
     $(document).ready(function() {
       var visitorLang = document.getElementById('hidden').innerHTML;
       preferences[0] = visitorLang;
@@ -60,7 +61,8 @@
       })
 
       // Initialise Ko ViewModel
-        ko.applyBindings(new AppViewModel());
+            AppViewModel = new ViewModel();
+            ko.applyBindings(AppViewModel);
         });
   </script>
 </head>
