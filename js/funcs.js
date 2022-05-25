@@ -1109,9 +1109,9 @@
                         if (fearAndGreedData != undefined) {
                                 fAndGString = ": " + this.fearAndGreedValue() + "%";
                                 
-                                if (fearAndGreedData.data[0].value < fearAndGreedData.data[4].value) {
+                                if (fearAndGreedData.data[0].value < fearAndGreedData.data[1].value) {
                                         fAndGString += "  ↓↓↓";
-                                } else if (fearAndGreedData.data[0].value > fearAndGreedData.data[4].value) {
+                                } else if (fearAndGreedData.data[0].value > fearAndGreedData.data[1].value) {
                                         fAndGString += "  ↑↑↑";
                                 }
                                 
