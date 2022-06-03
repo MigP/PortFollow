@@ -20,9 +20,10 @@
 	    $id = $row['id'];
 
 		$query = "UPDATE prefs SET language='$lang' WHERE personID = '$id'";
-		$_SESSION["visitorlang"] = $lang;
+		
 		if ($conn->query($query) === TRUE) {
 		    echo "New record updated successfully";
+                    $_SESSION["visitorlang"] = $lang;
 		} else {
 		    echo "Error: " . $query . "<br>" . $conn->error;
 		}
@@ -73,6 +74,7 @@
 
 		if ($conn->query($query) === TRUE) {
 		    echo "New record updated successfully";
+                    $_SESSION["first_name"] = $fname;
 		} else {
 		    echo "Error: " . $query . "<br>" . $conn->error;
 		}
@@ -81,6 +83,7 @@
 
 		if ($conn->query($query2) === TRUE) {
 		    echo "New record updated successfully";
+                    $_SESSION["last_name"] = $lname;
 		} else {
 		    echo "Error: " . $query2 . "<br>" . $conn->error;
 		}
@@ -94,7 +97,9 @@
 	    $code = $row['code'];
 
 		// Send email with reset instructions
-			$link= "http://exchange.miguelpinto.dx.am/includes/reset_pass.php";
+			$to=$email;
+			$from = "contact@miguelpinto.dx.am";
+			$link= "http://portfollow.miguelpinto.dx.am/includes/delete_account.php?email=".$email."&code=".$code;
 		    if ($visitorlang = "en") {
 				$message = "Delete account";
 				$subject="PortFollow - Delete account - DO NOT REPLY";
@@ -126,12 +131,10 @@
 				$body="Пожалуйста, нажмите на ссылку ниже, чтобы удалить свою учетную запись.\n\n".$link;
 				$headers = "От:".$from;
 		    }
-			$to=$email;
-			$from = "contact@miguelpinto.dx.am";
-			$link= "http://exchange.miguelpinto.dx.am/includes/delete_account.php?email=".$email."&code=".$code;
-			mail($to,$subject,$body,$headers);
+
+		mail($to,$subject,$body,$headers);
 	} elseif(isset($_POST['del']) && isset($_POST['id'])) {
-        extract($_POST);
+                extract($_POST);
 
 		$transaction_id = sanitise($_POST['id']);
 		$del = sanitise($_POST['del']);
@@ -218,9 +221,9 @@
 			echo "</div>";
 		}
 	} elseif(isset($_POST['assetlist'])) {
-        extract($_POST);
+                extract($_POST);
 
-        $assetlist = sanitise($_POST['assetlist']);
+                $assetlist = sanitise($_POST['assetlist']);
 		$email = sanitise($_SESSION["email"]);
 
 	    $sql=mysqli_query($conn,"SELECT * FROM users WHERE email = '$email'");
@@ -236,8 +239,8 @@
 		    echo "Error: " . $query . "<br>" . $conn->error;
 		}
 	} elseif(isset($_POST['visitlang'])) {
-        extract($_POST);
+                extract($_POST);
 
-        $_SESSION["visitorlang"] = sanitise($_POST['visitlang']);
+                $_SESSION["visitorlang"] = sanitise($_POST['visitlang']);
 	}
 ?>
