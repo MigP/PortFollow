@@ -349,7 +349,7 @@
 	    exitMenu();
 	}
 
-	function changeName(){
+	function changeTheName(){
 		$fname = document.getElementById("fname").value;
 		$lname = document.getElementById("lname").value;
 	    if ($fname.length >0 && $lname.length >0) {
@@ -440,7 +440,7 @@
 
 		function clickName() {
 			document.getElementById("popup_message").innerHTML = "Change your name:";
-			document.getElementById("popup_buttons").innerHTML = "<div class='col'><div class='form-group' style='flex-direction: column;'><div><img src='images/icons/user.svg' alt='Change name' width='15' height='15' style='margin-right: 5px;'><input type='text' id='fname' name='fname' placeholder='First Name' required='required' maxlength='50' onChange='formSubmitSafetyValidator(this)' onKeyup='formSubmitSafetyValidator(this)'><br><img src='images/icons/user.svg' alt='Change name' width='15' height='15' style='margin-right: 5px;'><input type='text' id='lname' name='lname' placeholder='Last Name' required='required' maxlength='50' onChange='formSubmitSafetyValidator(this)' onKeyup='formSubmitSafetyValidator(this)'><br></div><div><br></div><button class='form_button btn btn-success btn-lg btn-block' style='width: 175px;' onClick='changeName()'>Update</button><button class='form_button btn btn-success btn-lg btn-block' style='width: 175px;' onClick='exitMenu()'>Cancel</button></div></div>";
+			document.getElementById("popup_buttons").innerHTML = "<div class='col'><div class='form-group' style='flex-direction: column;'><div><img src='images/icons/user.svg' alt='Change name' width='15' height='15' style='margin-right: 5px;'><input type='text' id='fname' name='fname' placeholder='First Name' required='required' maxlength='50' onChange='formSubmitSafetyValidator(this)' onKeyup='formSubmitSafetyValidator(this)'><br><img src='images/icons/user.svg' alt='Change name' width='15' height='15' style='margin-right: 5px;'><input type='text' id='lname' name='lname' placeholder='Last Name' required='required' maxlength='50' onChange='formSubmitSafetyValidator(this)' onKeyup='formSubmitSafetyValidator(this)'><br></div><div><br></div><button class='form_button btn btn-success btn-lg btn-block' style='width: 175px;' onClick='changeTheName()'>Update</button><button class='form_button btn btn-success btn-lg btn-block' style='width: 175px;' onClick='exitMenu()'>Cancel</button></div></div>";
 			$('.pop_up_parent').toggleClass('popup_visibility');
 		}
 
@@ -606,9 +606,9 @@
 						// Loop through HTML transactions
 							var currentType = "";
 							for (a=0; a<transactionsInHtml; a++) {
-								if (document.getElementById("transaction_type_" + a).childNodes[0].src.includes("images/icons/sell.svg") == true) {
+								if (document.getElementById("transaction_type_" + a).children[0].src.includes("images/icons/sell.svg") == true) {
 									currentType = "S";
-								} else if (document.getElementById("transaction_type_" + a).src.includes("images/icons/buy.svg") == true) {
+								} else if (document.getElementById("transaction_type_" + a).children[0].src.includes("images/icons/buy.svg") == true) {
 									currentType = "B";
 								}
 
